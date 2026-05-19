@@ -71,6 +71,12 @@ function clean(str, maxLen = 50) {
 // Store structure: key = `${date}` (YYYY-MM-DD)
 // Value = { slots: { "13:30": {type:"booking", firstName, lastName, phone, id, createdAt} | {type:"blocked"} } }
 function getAppointmentsStore() {
+  // Workaround for MissingBlobsEnvironmentError: pass siteID and token explicitly
+  const siteID = process.env.NETLIFY_SITE_ID || process.env.SITE_ID;
+  const token = process.env.NETLIFY_BLOBS_TOKEN || process.env.NETLIFY_API_TOKEN;
+  if (siteID && token) {
+    return getStore({ name: "appointments", consistency: "strong", siteID, token });
+  }
   return getStore({ name: "appointments", consistency: "strong" });
 }
 
@@ -300,3 +306,4 @@ export const handler = async (event) => {
     return json(500, { error: "Server error" });
   }
 };
+
