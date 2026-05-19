@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  functions = "."
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["appointments.mjs"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/appointments/:splat"
+  status = 200

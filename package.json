@@ -1,0 +1,9 @@
+{
+  "name": "teds-barber",
+  "version": "1.0.0",
+  "description": "Ted's Barber appointment booking site",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ted's Barber — Reservations</title>
+<meta name="theme-color" content="#f7f4ef">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+
+  <header class="page-header">
+    <h1 class="page-title">Ted's Barber</h1>
+    <p class="page-sub">Tue–Sat · 1:30 – 5:30 PM</p>
+  </header>
+
+  <div class="tabs">
+    <div class="tabs-inner">
+      <button class="tab active" data-tab="book">Book</button>
+      <button class="tab" data-tab="cancel">Manage</button>
+    </div>
+  </div>
+
+  <!-- BOOKING -->
+  <section class="panel" id="panel-book">
+    <div class="card">
+      <div class="step-grid">
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">01</span>
+            <h2>Choose a day</h2>
+          </div>
+          <div id="date-picker" class="date-scroll"></div>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">02</span>
+            <h2>Pick a time</h2>
+          </div>
+          <div id="slot-picker" class="slot-picker">
+            <p class="slot-empty">Select a date first</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">03</span>
+            <h2>Your details</h2>
+          </div>
+          <form id="book-form" class="book-form" autocomplete="on">
+            <div class="field">
+              <label class="field-label" for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" required maxlength="40" autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label class="field-label" for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" required maxlength="40" autocomplete="family-name">
+            </div>
+            <div class="field">
+              <label class="field-label" for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <button type="submit" class="primary-btn" id="book-submit" disabled>
+              <span id="book-btn-text">Reserve</span>
+              <span class="arrow">→</span>
+            </button>
+            <p class="form-msg" id="book-msg"></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CANCEL -->
+  <section class="panel hidden" id="panel-cancel">
+    <div class="card cancel-card">
+      <h2>Manage your appointment</h2>
+      <p class="muted">Enter the phone number you booked with.</p>
+      <form id="lookup-form" class="lookup-form">
+        <input type="tel" name="phone" required placeholder="Phone number" autocomplete="tel">
+        <button type="submit" class="primary-btn">
+          Look up
+          <span class="arrow">→</span>
+        </button>
+      </form>
+      <div id="lookup-results" class="lookup-results"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <a href="admin.html" class="admin-link">Staff sign-in</a>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
